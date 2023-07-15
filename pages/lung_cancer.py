@@ -171,10 +171,30 @@ if(selectModel !=""):
             # joblib.dump(knn, 'knn_model.joblib')
             # loaded_model = joblib.load('knn_model.joblib')
 
+            components.html(
+                """
+                    <hr>
+                    <p style="color: white;">not neccessary part, will delete</p>
+                """,
+                height=80
+            )
             st.write("testing if it is accurate or not..")
             question 
             test = knn.predict([question, question])
             test
+            components.html(
+                """
+                    <hr>
+                """,
+                height=10
+            )
+
+            st.subheader("Result")
+            result = test[0]
+            if(result == "YES"):
+                st.write(f'<p style="text-align: justify; font-size: 20px;">{"Unfortunately, it appears that you have lung cancer."}</p>', unsafe_allow_html=True)
+            else:
+                st.write(f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
 
             # testJoblib = loaded_model.predict([question, question])
             # testJoblib
