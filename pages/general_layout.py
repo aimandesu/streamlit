@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import joblib
 import streamlit.components.v1 as components
-import os
 
 #checking accuracy 
 from sklearn.model_selection import train_test_split
@@ -66,33 +65,6 @@ st.subheader("Model")
 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Pick models to use: KNN, Random Forest, SVM."}</p>', unsafe_allow_html=True)
 
 
-# components.html(
-#     """
-# <div>
-#     <p style="text-align: justify; color: white; font-size: 30px; height: 100%">
-#         Lung cancer is a type of cancer that begins in the cells of the lungs. 
-#         It is one of the most common and deadliest forms of cancer worldwide. 
-#         The primary function of the lungs is to supply oxygen to the body and remove carbon dioxide during breathing. 
-#         Lung cancer disrupts this normal function and can spread to other parts of the body through the bloodstream or lymphatic system.
-#     </p>
-# </div>
-#     """,
-#     # height=300
-# )
-
-# cancerDescription = "Lung cancer is a type of cancer that begins in the cells of the lungs. \
-#         It is one of the most common and deadliest forms of cancer worldwide. \
-#         The primary function of the lungs is to supply oxygen to the body and remove carbon dioxide during breathing. \
-#         Lung cancer disrupts this normal function and can spread to other parts of the body through the bloodstream or lymphatic system."
-
-# st.title(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{cancerDescription}</p>', unsafe_allow_html=True)
-
-# def header(thisThing):
-#      st.markdown(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{thisThing}</p>', unsafe_allow_html=True)
-
-# header("Test")
-
-
 dataset = pd.read_csv("dataset/survey_lung_cancer.csv")
 
 selectModel = st.selectbox("Select model", options=["", "KNN", "Random Forest", "SVM"])
@@ -106,11 +78,7 @@ st.write(f'<p style="text-align: justify; font-size: 20px;">{"Training and Testi
 if(selectModel !=""):
 
     #all these training need to be saved in joblib
-    if os.path.exists("joblib/train_test_split_indices.joblib"):
-        X_train, X_test, y_train, y_test = joblib.load('joblib/train_test_split_indices.joblib')
-    else:
-        X_train, X_test, y_train, y_test = train_test_split(data_input_training, data_target_training, test_size=0.2)
-        joblib.dump((X_train, X_test, y_train, y_test), 'joblib/train_test_split_indices.joblib')
+    X_train, X_test, y_train, y_test = train_test_split(data_input_training, data_target_training, test_size=0.2)
 
     st.write("data input training")
     X_train
@@ -162,36 +130,20 @@ if(selectModel !=""):
           container_2.button('End Session KNN')
 
         if value:
-            knn = KNeighborsClassifier(n_neighbors=selectNeigbors)
-            knn.fit(X_train, y_train)
-
+          
             st.write("prediction knn:", selectNeigbors)
-            prediction = knn.predict(X_test)
-            prediction
-
-            st.write("accuracy knn: ", selectNeigbors)
-            accuracy = accuracy_score(y_test, prediction)
-            accuracy
-
-            # joblib.dump(knn, 'knn_model.joblib')
-            # loaded_model = joblib.load('knn_model.joblib')
-
-            # st.write("testing if it is accurate or not..")
-            # question 
-            test = knn.predict([question, question])
            
+
+            st.write("accuracy knn:", selectNeigbors)
+            
+
             st.subheader("Result")
-            result = test[0]
-            if(result == "YES"):
+            result = "value korang target"
+            if(result == "value korang target"):
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Unfortunately, it appears that you have lung cancer."}</p>', unsafe_allow_html=True)
             else:
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
 
-            # testJoblib = loaded_model.predict([question, question])
-            # testJoblib
-
-            # bro = loaded_model.predict(X_test)
-            # bro
 
     elif(selectModel == "Random Forest"):
         container_2 = st.empty()
@@ -205,54 +157,43 @@ if(selectModel !=""):
           container_2.button('End Session RF')
 
         if value:
-            rf = RandomForestClassifier(n_estimators=selectEstimator)
-            rf.fit(X_train, y_train)
+          
 
             st.write("prediction RF:", selectEstimator)
-            prediction = rf.predict(X_test)
-            prediction
+           
 
-            st.write("accuracy RF: ", selectEstimator)
-            accuracy = accuracy_score(y_test, prediction)
-            accuracy
-
-            test = rf.predict([question, question])
+            st.write("accuracy RF:", selectEstimator)
+            
 
             st.subheader("Result")
-            result = test[0]
-            if(result == "YES"):
+            result = "value korang target"
+            if(result == "value korang target"):
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Unfortunately, it appears that you have lung cancer."}</p>', unsafe_allow_html=True)
             else:
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
-
     elif(selectModel == "SVM"):
         container_2 = st.empty()
         value = container_2.button('Start Analysis with SVM')
 
-        st.write("Support Vector Machine")
-        selectKernel = st.select_slider("select kernels to use:", options=["linear", "rbf", "poly", "sigmoid",], disabled=value)
+        st.write("SVM")
+        selectKernel = st.select_slider("select kernel to use:", options=["linear", "rbf", "poly", "sigmoid" ], disabled=value)
 
         if value:
           container_2.empty()
           container_2.button('End Session SVM')
 
         if value:
-            svm = SVC(kernel=selectKernel)
-            svm.fit(X_train, y_train)
+          
 
-            st.write("prediction RF:", selectKernel)
-            prediction = svm.predict(X_test)
-            prediction
+            st.write("prediction svm:", selectKernel)
+           
 
-            st.write("accuracy RF: ", selectKernel)
-            accuracy = accuracy_score(y_test, prediction)
-            accuracy
-
-            test = svm.predict([question, question])
+            st.write("accuracy SVM:", selectKernel)
+            
 
             st.subheader("Result")
-            result = test[0]
-            if(result == "YES"):
+            result = "value korang target"
+            if(result == "value korang target"):
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Unfortunately, it appears that you have lung cancer."}</p>', unsafe_allow_html=True)
             else:
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
