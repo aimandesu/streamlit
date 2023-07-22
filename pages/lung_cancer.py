@@ -106,11 +106,11 @@ st.write(f'<p style="text-align: justify; font-size: 20px;">{"Training and Testi
 if(selectModel !=""):
 
     #all these training need to be saved in joblib
-    if os.path.exists("joblib/train_test_split_indices.joblib"):
-        X_train, X_test, y_train, y_test = joblib.load('joblib/train_test_split_indices.joblib')
+    if os.path.exists("joblib/tts_indices_lung_cancer.joblib"):
+        X_train, X_test, y_train, y_test = joblib.load('joblib/tts_indices_lung_cancer.joblib')
     else:
         X_train, X_test, y_train, y_test = train_test_split(data_input_training, data_target_training, test_size=0.2)
-        joblib.dump((X_train, X_test, y_train, y_test), 'joblib/train_test_split_indices.joblib')
+        joblib.dump((X_train, X_test, y_train, y_test), 'joblib/tts_indices_lung_cancer.joblib')
 
     st.write("data input training")
     X_train
