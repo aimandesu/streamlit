@@ -39,6 +39,17 @@ symptoms =  "\
             chest pain, shortness of breath, coughing up blood, fatigue, unexplained weight loss, and recurrent respiratory infections. \
             Early detection of lung cancer is crucial for better treatment outcomes.\
             "
+dataset_description = "\
+            The datasets consist of gender, age, values for 2 = yes, and 1 = no for smoking, yellow fingers, anxiety, peer pressure, chronic disease,  \
+            fatigue, allergy, wheezing, alcohol consumption, coughing, shortness of breath, swallow dificulity, chest pain, and result of lung cancer consist. \
+            of YES or NO\
+            "
+
+variable = "\
+            The variable input will be used are all the datasets features except the gender and result of lung cancer,  \
+            while the variable output will be result of lung cancer\
+            \
+            "
 
 st.write(f'<p style="text-align: justify; font-size: 20px;">{description}</p>', unsafe_allow_html=True)
 st.write(f'<p style="text-align: justify; font-size: 20px;">{type}</p>', unsafe_allow_html=True)
@@ -61,6 +72,12 @@ with col2:
 
 st.header("Analysis")
 st.write(f'<p style="text-align: justify; font-size: 20px;">{"In this section, the web application is used to analysis whether the user has lung cancer or not."}</p>', unsafe_allow_html=True)
+
+st.subheader("Dataset description")
+st.write(f'<p style="text-align: justify; font-size: 20px;">{dataset_description}</p>', unsafe_allow_html=True)
+
+st.subheader("Variable Input / Output")
+st.write(f'<p style="text-align: justify; font-size: 20px;">{variable}</p>', unsafe_allow_html=True)
 
 st.subheader("Model")
 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Pick models to use: KNN, Random Forest, SVM."}</p>', unsafe_allow_html=True)
@@ -241,11 +258,11 @@ if(selectModel !=""):
             svm = SVC(kernel=selectKernel)
             svm.fit(X_train, y_train)
 
-            st.write("prediction RF:", selectKernel)
+            st.write("prediction SVM:", selectKernel)
             prediction = svm.predict(X_test)
             prediction
 
-            st.write("accuracy RF: ", selectKernel)
+            st.write("accuracy SVM: ", selectKernel)
             accuracy = accuracy_score(y_test, prediction)
             accuracy
 
