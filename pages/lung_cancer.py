@@ -155,7 +155,8 @@ if(selectModel !=""):
         value = container_2.button('Start Analysis with KNN')
 
         st.write("KNN")
-        selectNeigbors = st.select_slider("select neighbors to use:", options=[1, 5, 10, 15 ], disabled=value)
+        # selectNeigbors = st.select_slider("select neighbors to use:", options=[1, 5, 10, 15 ], disabled=value)
+        selectNeigbors = st.selectbox("select neighbors to use:", options=[1, 5, 10, 15 ], disabled=value)
 
         if value:
           container_2.empty()
@@ -198,7 +199,7 @@ if(selectModel !=""):
         value = container_2.button('Start Analysis with RF')
 
         st.write("Random Forest")
-        selectEstimator = st.select_slider("select estimators to use:", options=[100, 500, 1000,], disabled=value)
+        selectEstimator = st.selectbox("select estimators to use:", options=[100, 500, 1000,], disabled=value)
 
         if value:
           container_2.empty()
@@ -230,7 +231,7 @@ if(selectModel !=""):
         value = container_2.button('Start Analysis with SVM')
 
         st.write("Support Vector Machine")
-        selectKernel = st.select_slider("select kernels to use:", options=["linear", "rbf", "poly", "sigmoid",], disabled=value)
+        selectKernel = st.selectbox("select kernels to use:", options=["linear", "rbf", "poly", "sigmoid",], disabled=value)
 
         if value:
           container_2.empty()
@@ -256,6 +257,11 @@ if(selectModel !=""):
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Unfortunately, it appears that you have lung cancer."}</p>', unsafe_allow_html=True)
             else:
                 st.write(f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
+
+    if(value):
+        st.subheader("Analysis Ends")
+        st.write("Want to try other model? click [here](#model)")
+        st.write("Want to alter your question? click [here](#question)")
 
 else:
     st.warning("Please select model at model section to proceed.")
