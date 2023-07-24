@@ -40,7 +40,7 @@ symptoms = "\
             "
 dataset_description = "\
             The datasets consist of gender, age, values for 2 = yes, and 1 = no for smoking, yellow fingers, anxiety, peer pressure, chronic disease,  \
-            fatigue, allergy, wheezing, alcohol consumption, coughing, shortness of breath, swallow dificulity, chest pain, and result of lung cancer consist. \
+            fatigue, allergy, wheezing, alcohol consumption, coughing, shortness of breath, swallow dificulity, chest pain, and result of lung cancer consist \
             of YES or NO\
             "
 

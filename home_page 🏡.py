@@ -1,22 +1,12 @@
 import streamlit as st
-import pandas as pd
 import streamlit.components.v1 as components
 
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.neighbors import KNeighborsRegressor
-
-from sklearn.metrics import mean_squared_error
-
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.svm import SVR
-
-
+# st.sidebar.header("Pages")
+# st.sidebar.button("te")
 
 st.title("Home")
 
-description =   "The web application is used to determine cancers such as breast, kidney, lung, prostate, and skin.\
+description = "The web application is used to determine cancers such as breast, kidney, lung, prostate, and skin.\
                 For breast cancer, the web application is going to determine whether the user has lung cancer or not. \
                 Next, for kidney the web application is going to determine whether the user has lung cancer or not. \
                 After that, lung cancer, the web application is going to determine whether the user has lung cancer or not. \
@@ -27,17 +17,21 @@ description =   "The web application is used to determine cancers such as breast
                 "
 
 st.subheader("Description of the system")
-st.write(f'<p style="text-align: justify; font-size: 20px; padding-bottom: 20px;">{description}</p>', unsafe_allow_html=True)
+st.write(
+    f'<p style="text-align: justify; font-size: 20px; padding-bottom: 20px;">{description}</p>', unsafe_allow_html=True)
 
 to_use = "\n 1. From the appbar at left choose the cancer to try \n 2. Pick the model to try \n 3. Answer the question \n 4. Click the start analysis button"
 
 st.subheader("Model & How to use")
-st.write(f'<p style="text-align: justify; font-size: 20px;">{"Three models available: KNN, Random Forest, and SVM"}</p>', unsafe_allow_html=True)
+st.write(
+    f'<p style="text-align: justify; font-size: 20px;">{"Three models available: KNN, Random Forest, and SVM"}</p>', unsafe_allow_html=True)
 
-st.write(f'<p style="text-align: justify; font-size: 20px;">{"How to use the web application: "}</p>', unsafe_allow_html=True)
+st.write(
+    f'<p style="text-align: justify; font-size: 20px;">{"How to use the web application: "}</p>', unsafe_allow_html=True)
 st.write(to_use)
 
-st.write(f'<p style="text-align: justify; font-size: 20px;">{""}</p>', unsafe_allow_html=True)
+st.write(
+    f'<p style="text-align: justify; font-size: 20px;">{""}</p>', unsafe_allow_html=True)
 
 st.subheader("Result Conclusion")
 
@@ -50,19 +44,19 @@ data = [
                 'option': ["1", "5", "10", "15"],
                 'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
             },
-             {
+            {
                 'model': "RF",
-                'option': ["100", "500", "1000"], 
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"], 
+                'option': ["100", "500", "1000"],
+                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
             },
-             {
+            {
                 'model': "SVM",
-                'option': ["linear", "rbf", "poly", "sigmoid"], 
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"], 
+                'option': ["linear", "rbf", "poly", "sigmoid"],
+                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
             },
         ]
     },
-     {
+    {
         'title': "Breast Cancer",
         'description': [
             {
@@ -70,15 +64,15 @@ data = [
                 'option': ["1", "5", "10", "15"],
                 'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
             },
-             {
+            {
                 'model': "RF",
-                'option': ["100", "500", "1000"], 
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"], 
+                'option': ["100", "500", "1000"],
+                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
             },
-             {
+            {
                 'model': "SVM",
-                'option': ["linear", "rbf", "poly", "sigmoid"], 
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"], 
+                'option': ["linear", "rbf", "poly", "sigmoid"],
+                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
             },
         ]
     },
@@ -90,15 +84,15 @@ data = [
                 'option': ["1", "5", "10", "15"],
                 'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
             },
-             {
+            {
                 'model': "RF",
-                'option': ["100", "500", "1000"], 
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"], 
+                'option': ["100", "500", "1000"],
+                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
             },
-             {
+            {
                 'model': "SVM",
-                'option': ["linear", "rbf", "poly", "sigmoid"], 
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"], 
+                'option': ["linear", "rbf", "poly", "sigmoid"],
+                'results': ["0.01", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
             },
         ]
     },
@@ -110,15 +104,15 @@ data = [
                 'option': ["1", "5", "10", "15"],
                 'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
             },
-             {
+            {
                 'model': "RF",
-                'option': ["100", "500", "1000"], 
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"], 
+                'option': ["100", "500", "1000"],
+                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
             },
-             {
+            {
                 'model': "SVM",
-                'option': ["linear", "rbf", "poly", "sigmoid"], 
-                'results': ["0.9193548387096774", "0.2", "0.8548387096774194", "0.8548387096774194"], 
+                'option': ["linear", "rbf", "poly", "sigmoid"],
+                'results': ["0.9193548387096774", "0.2", "0.8548387096774194", "0.8548387096774194"],
             },
         ]
     },
@@ -130,15 +124,15 @@ data = [
                 'option': ["1", "5", "10", "15"],
                 'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
             },
-             {
+            {
                 'model': "RF",
-                'option': ["100", "500", "1000"], 
-                'results': ["0.5", "0.9032258064516129", "0.8709677419354839"], 
+                'option': ["100", "500", "1000"],
+                'results': ["0.5", "0.9032258064516129", "0.8709677419354839"],
             },
-             {
+            {
                 'model': "SVM",
-                'option': ["linear", "rbf", "poly", "sigmoid"], 
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"], 
+                'option': ["linear", "rbf", "poly", "sigmoid"],
+                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
             },
         ]
     },
@@ -149,6 +143,7 @@ best_algo = ""
 # option_to = ""
 # st.write(current_best_mse)
 
+
 def find_the_best(mse, current, algo, ):
     global current_best_mse
     global best_algo
@@ -157,9 +152,9 @@ def find_the_best(mse, current, algo, ):
     # st.write(mse)
     # st.write(index)
     if current > float(mse):
-         current_best_mse = float(mse)
-         best_algo = algo
-        #  option_to = option
+        current_best_mse = float(mse)
+        best_algo = algo
+       #  option_to = option
     # else:
     #    return
     # if index == 0:
@@ -171,7 +166,7 @@ def find_the_best(mse, current, algo, ):
     #         current_best_mse_breast = mse
     #         return current_best_mse_breast
 
-    # elif index == 2:   
+    # elif index == 2:
     #     if current_best_mse_kidney < mse:
     #         current_best_mse_kidney = mse
     #         return current_best_mse_kidney
@@ -186,30 +181,33 @@ def find_the_best(mse, current, algo, ):
     #         current_best_mse_skin = mse
     #         return current_best_mse_skin
 
+
 for element in data:
 
     title = element['title']
-    st.write(f'<p style="text-align: justify; font-size: 25px; font-weight: bold;">{title}</p>', unsafe_allow_html=True)
-   
-    for i, k in enumerate (element['description']):
+    st.write(
+        f'<p style="text-align: justify; font-size: 25px; font-weight: bold;">{title}</p>', unsafe_allow_html=True)
+
+    for i, k in enumerate(element['description']):
         model = k['model']
         # option_det = k['option'][i]
         # st.write(option_det)
-        st.write(f'<p style="text-align: justify; font-size: 20px; font-weight: bold; font-style: italic;">{model}</p>', unsafe_allow_html=True)
-        
+        st.write(
+            f'<p style="text-align: justify; font-size: 20px; font-weight: bold; font-style: italic;">{model}</p>', unsafe_allow_html=True)
+
         option = ""
 
-        if model =="KNN":
+        if model == "KNN":
             num_columns = 5
             option = "neighbors"
-            
+
             # columns = [st.columns(num_columns, gap="large") for _ in range(num_columns)]
             # columns[0][0].write("neighbors")
             # columns[1][0].write("mse")
             # columns_result = [st.columns(num_columns) for _ in range(num_columns)]
             # columns_result[0][0].write("results")
             # c1, c2, c3, c4 = st.columns(4)
-        elif model =="RF":
+        elif model == "RF":
             num_columns = 4
             option = "estimators"
             # columns = [st.columns(num_columns, gap="large") for _ in range(num_columns)]
@@ -217,7 +215,7 @@ for element in data:
             # columns[1][0].write("mse")
             # columns_result = [st.columns(num_columns) for _ in range(num_columns)]
             # columns_result[0][0].write("results")
-        elif model =="SVM": 
+        elif model == "SVM":
             num_columns = 5
             option = "kernels"
             # columns = [st.columns(num_columns, gap="large") for _ in range(num_columns)]
@@ -226,15 +224,16 @@ for element in data:
             # columns_result = [st.columns(num_columns) for _ in range(num_columns)]
             # columns_result[0][0].write("results")
         # st.write("option")
-        columns = [st.columns(num_columns, gap="large") for _ in range(num_columns)]
+        columns = [st.columns(num_columns, gap="large")
+                   for _ in range(num_columns)]
         columns[0][0].write(option)
-        columns[1][0].write("mse")
-        
-        for l, option in enumerate (k['option']):
+        columns[1][0].write("accuracy")
+
+        for l, option in enumerate(k['option']):
             # if(i==0):
             #     # name = "c"+ str(l+1)
-                with st.container():
-                    columns[0][l+1].write(option)
+            with st.container():
+                columns[0][l+1].write(option)
             # if(i==1):
             #     # name = "c"+ str(l+1)
             #     with st.container():
@@ -243,18 +242,18 @@ for element in data:
             #     # name = "c"+ str(l+1)
             #     with st.container():
             #         columns[0][l+1].write(option)
-                
-                # st.write(name)
-                # c1.write(option)
-                # c2.write(option)
-                # c3.write(option)
-                # c4.write(option)
+
+            # st.write(name)
+            # c1.write(option)
+            # c2.write(option)
+            # c3.write(option)
+            # c4.write(option)
             # st.write()
         # for l in range(num_columns):
         #     st.write(l)
         # st.write("results")
-        for o, results in enumerate (k['results']):
-                find_the_best(results, current_best_mse, model)
+        for o, results in enumerate(k['results']):
+            find_the_best(results, current_best_mse, model)
             # if(i==0):
             #     # name = "c"+ str(l+1)
             #     with st.container():
@@ -266,36 +265,36 @@ for element in data:
             #         columns[1][o+1].write(results)
             #         find_the_best(results)
             # if(i==2):
-                # name = "c"+ str(l+1)
-                with st.container():
-                    columns[1][o+1].write(results)
-                    
-    st.subheader("best algorithm:")
-    st.write(f'<p style="text-align: justify; font-size: 19px; font-weight: bold; font-style: italic;">{best_algo}</p>', unsafe_allow_html=True)
-    st.write(f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"lowest mse: " + str(current_best_mse)}</p>', unsafe_allow_html=True)
+            # name = "c"+ str(l+1)
+            with st.container():
+                columns[1][o+1].write(results)
 
-    st.write(f'<p style="text-align: justify; font-size: 20px; padding-bottom: 30px;">{""}</p>', unsafe_allow_html=True)
-    
+    st.subheader("best algorithm:")
+    st.write(
+        f'<p style="text-align: justify; font-size: 19px; font-weight: bold; font-style: italic;">{best_algo}</p>', unsafe_allow_html=True)
+    st.write(
+        f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"accuracy: " + str(current_best_mse)}</p>', unsafe_allow_html=True)
+    st.write(
+        f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"closest accuracy to 0 means the accuracy is far precise"}</p>', unsafe_allow_html=True)
+
+    st.write(
+        f'<p style="text-align: justify; font-size: 20px; padding-bottom: 30px;">{""}</p>', unsafe_allow_html=True)
+
     # st.write(current_best_mse)
     # st.write(best_algo)
     # st.write(option_to)
     # st.write(current_best_mse)
-
+    current_best_mse = 1
     components.html(
-    """
+        """
     <hr>
     """,
-    height=10
+        height=10
     )
-
-
-
-
 
 
 # selectDataset = st.selectbox("Select dataset", options= ["Male", "Female"])
 
-# st.sidebar.success("Select a page above")
 
 # datasetRead = ""
 
@@ -343,13 +342,13 @@ for element in data:
 
 # elif(selectDataset != "" and selectModel == "Random Forest"):
 #     st.write("random forest")
-   
+
 #     estimators = [100, 500, 1000]
 
 #     for i in estimators:
 #         st.write("estimator", i)
 #         st.write("prediction")
-        
+
 #         rf = RandomForestRegressor(n_estimators=i, random_state=0)
 #         rf.fit(X_train, y_train)
 
@@ -378,11 +377,3 @@ for element in data:
 #         st.write("mean squared error: for kernel", i)
 #         svm = mean_squared_error(prediction, y_test)
 #         svm
-
-
-
-
-
-
-
-
