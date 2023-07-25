@@ -221,18 +221,21 @@ if (selectModel != ""):
                 answer = st.slider(element, 0, 200)
             elif (element == "What is the area(cm) of your prostate?"):
                 answer = st.slider(element, 0, 2000)
-            elif (element == "Smoothness of your prostate (0 = rough,1 = smooth)?"):
-                answer = st.number_input(
-                    "Smoothness of your prostate (0 Until 1)?", key="1")
-            elif (element == "Compactness of your prostate (0 = not compact,1 = compact)?"):
-                answer = st.number_input(
-                    "Compactness of your prostate (0 Until 1)?", key="2")
-            elif (element == "Symmetry of your prostate (0 = symmetry,1 = not symmetry)?"):
-                answer = st.number_input(
-                    "Symmetry of your prostate (0 Until 1)?", key="3")
-            elif (element == "Fractal Dimension of your prostate"):
-                answer = st.number_input(
-                    "Fractal Dimension of your prostate (0 Until 1)", key="4")
+            else:
+                st.number_input(element)
+            # elif (element == "Smoothness of your prostate (0 = rough,1 = smooth)?"):
+            #     answer = st.number_input(
+            #         "Smoothness of your prostate (0 Until 1)?", key="1")
+            # elif (element == "Compactness of your prostate (0 = not compact,1 = compact)?"):
+            #     answer = st.number_input(
+            #         "Compactness of your prostate (0 Until 1)?", key="2")
+            # elif (element == "Symmetry of your prostate (0 = symmetry,1 = not symmetry)?"):
+            #     answer = st.number_input(
+            #         "Symmetry of your prostate (0 Until 1)?", key="3")
+            # elif (element == "Fractal Dimension of your prostate"):
+            #     answer = st.number_input(
+            #         "Fractal Dimension of your prostate (0 Until 1)", key="4")
+
             # else:
             #     st.write("Please Check again")
             # change answer to the array

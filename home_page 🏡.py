@@ -62,17 +62,17 @@ data = [
             {
                 'model': "KNN",
                 'option': ["1", "5", "10", "15"],
-                'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
+                'results':   ["0.8596491228070176", "0.8859649122807017", "0.8947368421052632", "0.9035087719298246"],
             },
             {
                 'model': "RF",
                 'option': ["100", "500", "1000"],
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
+                'results': ["0.9473684210526315", "0.9473684210526315", "0.9473684210526315"],
             },
             {
                 'model': "SVM",
                 'option': ["linear", "rbf", "poly", "sigmoid"],
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
+                'results': ["0.9385964912280702", "0.8947368421052632", "0.8859649122807017", "0.42105263157894735"],
             },
         ]
     },
@@ -138,48 +138,48 @@ data = [
     },
 ]
 
-current_best_mse = 1
+# current_best_mse = 1
 best_algo = ""
-# option_to = ""
-# st.write(current_best_mse)
+# # option_to = ""
+# # st.write(current_best_mse)
 
 
-def find_the_best(mse, current, algo, ):
-    global current_best_mse
-    global best_algo
-    # global option_to
-    # st.write(current_best_mse)
-    # st.write(mse)
-    # st.write(index)
-    if current > float(mse):
-        current_best_mse = float(mse)
-        best_algo = algo
-       #  option_to = option
-    # else:
-    #    return
-    # if index == 0:
-    #     if current_best_mse_lung < mse:
-    #         current_best_mse_lung = mse
-    #         return current_best_mse_lung
-    # elif index == 1:
-    #     if current_best_mse_breast < mse:
-    #         current_best_mse_breast = mse
-    #         return current_best_mse_breast
+# def find_the_best(mse, current, algo, ):
+#     global current_best_mse
+#     global best_algo
+#     # global option_to
+#     # st.write(current_best_mse)
+#     # st.write(mse)
+#     # st.write(index)
+#     if current > float(mse):
+#         current_best_mse = float(mse)
+#         best_algo = algo
+#  option_to = option
+# else:
+#    return
+# if index == 0:
+#     if current_best_mse_lung < mse:
+#         current_best_mse_lung = mse
+#         return current_best_mse_lung
+# elif index == 1:
+#     if current_best_mse_breast < mse:
+#         current_best_mse_breast = mse
+#         return current_best_mse_breast
 
-    # elif index == 2:
-    #     if current_best_mse_kidney < mse:
-    #         current_best_mse_kidney = mse
-    #         return current_best_mse_kidney
+# elif index == 2:
+#     if current_best_mse_kidney < mse:
+#         current_best_mse_kidney = mse
+#         return current_best_mse_kidney
 
-    # elif index == 3:
-    #     if current_best_mse_prostate < mse:
-    #         current_best_mse_prostate = mse
-    #         return current_best_mse_prostate
+# elif index == 3:
+#     if current_best_mse_prostate < mse:
+#         current_best_mse_prostate = mse
+#         return current_best_mse_prostate
 
-    # elif index == 4:
-    #     if current_best_mse_skin < mse:
-    #         current_best_mse_skin = mse
-    #         return current_best_mse_skin
+# elif index == 4:
+#     if current_best_mse_skin < mse:
+#         current_best_mse_skin = mse
+#         return current_best_mse_skin
 
 
 for element in data:
@@ -253,7 +253,7 @@ for element in data:
         #     st.write(l)
         # st.write("results")
         for o, results in enumerate(k['results']):
-            find_the_best(results, current_best_mse, model)
+            # find_the_best(results, current_best_mse, model)
             # if(i==0):
             #     # name = "c"+ str(l+1)
             #     with st.container():
@@ -269,13 +269,20 @@ for element in data:
             with st.container():
                 columns[1][o+1].write(results)
 
+        if (title == "Lung Cancer"):
+            best_algo = "SVM with kernel linear"
+        elif (title == "Breast Cancer"):
+            best_algo = "Random Forest with estimators 100, 500, 1000"
+        else:
+            best_algo = "none"
+
     st.subheader("best algorithm:")
     st.write(
         f'<p style="text-align: justify; font-size: 19px; font-weight: bold; font-style: italic;">{best_algo}</p>', unsafe_allow_html=True)
+    # st.write(
+    #     f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"accuracy: " + str(current_best_mse)}</p>', unsafe_allow_html=True)
     st.write(
-        f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"accuracy: " + str(current_best_mse)}</p>', unsafe_allow_html=True)
-    st.write(
-        f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"closest accuracy to 0 means the accuracy is far precise"}</p>', unsafe_allow_html=True)
+        f'<p style="text-align: justify; font-size: 18px; font-weight: bold; font-style: italic;">{"closest accuracy to 1 means the accuracy is far precise"}</p>', unsafe_allow_html=True)
 
     st.write(
         f'<p style="text-align: justify; font-size: 20px; padding-bottom: 30px;">{""}</p>', unsafe_allow_html=True)
@@ -284,7 +291,7 @@ for element in data:
     # st.write(best_algo)
     # st.write(option_to)
     # st.write(current_best_mse)
-    current_best_mse = 1
+    best_algo = ""
     components.html(
         """
     <hr>
