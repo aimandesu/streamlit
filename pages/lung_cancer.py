@@ -89,33 +89,6 @@ st.write(
     f'<p style="text-align: justify; font-size: 20px;">{"Pick models to use: KNN, Random Forest, SVM."}</p>', unsafe_allow_html=True)
 
 
-# components.html(
-#     """
-# <div>
-#     <p style="text-align: justify; color: white; font-size: 30px; height: 100%">
-#         Lung cancer is a type of cancer that begins in the cells of the lungs.
-#         It is one of the most common and deadliest forms of cancer worldwide.
-#         The primary function of the lungs is to supply oxygen to the body and remove carbon dioxide during breathing.
-#         Lung cancer disrupts this normal function and can spread to other parts of the body through the bloodstream or lymphatic system.
-#     </p>
-# </div>
-#     """,
-#     # height=300
-# )
-
-# cancerDescription = "Lung cancer is a type of cancer that begins in the cells of the lungs. \
-#         It is one of the most common and deadliest forms of cancer worldwide. \
-#         The primary function of the lungs is to supply oxygen to the body and remove carbon dioxide during breathing. \
-#         Lung cancer disrupts this normal function and can spread to other parts of the body through the bloodstream or lymphatic system."
-
-# st.title(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{cancerDescription}</p>', unsafe_allow_html=True)
-
-# def header(thisThing):
-#      st.markdown(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{thisThing}</p>', unsafe_allow_html=True)
-
-# header("Test")
-
-
 dataset = pd.read_csv("dataset/survey_lung_cancer.csv")
 
 selectModel = st.selectbox("Select model", options=[
@@ -130,7 +103,6 @@ st.write(
 
 if (selectModel != ""):
 
-    # all these training need to be saved in joblib
     if os.path.exists("joblib/tts_indices_lung_cancer.joblib"):
         X_train, X_test, y_train, y_test = joblib.load(
             'joblib/tts_indices_lung_cancer.joblib')
@@ -214,19 +186,16 @@ if (selectModel != ""):
 
         for index, element in enumerate(question):
 
-            # checking if its yes or no question
             if (element == "What is your age?"):
                 answer = st.slider(element, 0, 100)
             else:
                 answer = st.selectbox(element, options=["Yes", "No"])
 
-            # if input either yes or no
             if answer == "Yes":
                 answer = 2
             elif answer == "No":
                 answer = 1
 
-            # change answer to the array
             question[index] = answer
 
         if (selectModel == "KNN"):
@@ -234,7 +203,6 @@ if (selectModel != ""):
             value = container_2.button('Start Analysis with KNN')
 
             st.write("KNN")
-            # selectNeigbors = st.select_slider("select neighbors to use:", options=[1, 5, 10, 15 ], disabled=value)
             selectNeigbors = st.selectbox("select neighbors to use:", options=[
                 1, 5, 10, 15], disabled=value)
 
@@ -254,11 +222,6 @@ if (selectModel != ""):
                 accuracy = accuracy_score(y_test, prediction)
                 accuracy
 
-                # joblib.dump(knn, 'knn_model.joblib')
-                # loaded_model = joblib.load('knn_model.joblib')
-
-                # st.write("testing if it is accurate or not..")
-                # question
                 test = knn.predict([question, question])
 
                 st.subheader("Result")
@@ -269,12 +232,6 @@ if (selectModel != ""):
                 else:
                     st.write(
                         f'<p style="text-align: justify; font-size: 20px;">{"Great! it does not seem that you have lung cancer"}</p>', unsafe_allow_html=True)
-
-                # testJoblib = loaded_model.predict([question, question])
-                # testJoblib
-
-                # bro = loaded_model.predict(X_test)
-                # bro
 
         elif (selectModel == "Random Forest"):
             container_2 = st.empty()

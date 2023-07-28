@@ -84,33 +84,6 @@ st.write(
     f'<p style="text-align: justify; font-size: 20px;">{"Pick models to use: KNN, Random Forest, SVM."}</p>', unsafe_allow_html=True)
 
 
-# components.html(
-#     """
-# <div>
-#     <p style="text-align: justify; color: white; font-size: 30px; height: 100%">
-#         Prostate cancer is a type of cancer that begins in the cells of the prostate.
-#         It is most common among man and one of the deadliest forms of cancer worldwide.
-#         The prostate gland's primary function is to produce seminal fluid, which nourishes and protects sperm during ejaculation, aiding in reproduction.
-#         It also produces prostate-specific antigen (PSA) to help liquefy semen.
-#     </p>
-# </div>
-#     """,
-#     # height=300
-# )
-
-# cancerDescription = "Prostate cancer is a type of cancer that begins in the cells of the prostate. \
-#         It is the most common among man and one of the deadliest forms of cancer worldwide. \
-#         The prostate gland's primary function is to produce seminal fluid, which nourishes and protects sperm during ejaculation, aiding in reproduction. \
-#         It also produces prostate-specific antigen (PSA) to help liquefy semen."
-
-# st.title(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{cancerDescription}</p>', unsafe_allow_html=True)
-
-# def header(thisThing):
-#      st.markdown(f'<p style="background-color:red;color:#33ff33;font-size:24px;border-radius:2%;">{thisThing}</p>', unsafe_allow_html=True)
-
-# header("Test")
-
-
 dataset = pd.read_csv("dataset/skin_cancer.csv")
 
 selectModel = st.selectbox("Select model", options=[
@@ -126,7 +99,6 @@ st.write(
 
 if (selectModel != ""):
 
-    # all these training need to be saved in joblib
     if os.path.exists("joblib/tts_indices_skin_cancer.joblib"):
         X_train, X_test, y_train, y_test = joblib.load(
             'joblib/tts_indices_skin_cancer.joblib')
@@ -210,16 +182,13 @@ if (selectModel != ""):
 
         for index, element in enumerate(question):
 
-         # checking if its yes or no question
             if (element == "what is your elevation?"):
                 answer = st.slider(element, 0, 300)
             elif (element == "what is your dominant land cover?"):
                 answer = st.slider(element, 0, 50)
             else:
                 answer = st.number_input(element)
-            # else:
-            #     st.write("Please Check again")
-            # change answer to the array
+
             question[index] = answer
 
         if (selectModel == "KNN"):
@@ -227,7 +196,7 @@ if (selectModel != ""):
             value = container_2.button('Start Analysis with KNN')
 
             st.write("KNN")
-            # selectNeigbors = st.select_slider("select neighbors to use:", options=[1, 5, 10, 15 ], disabled=value)
+
             selectNeigbors = st.selectbox("select neighbors to use:", options=[
                 1, 5, 10, 15], disabled=value)
 
@@ -247,11 +216,6 @@ if (selectModel != ""):
                 accuracy = accuracy_score(y_test, prediction)
                 accuracy
 
-                # joblib.dump(knn, 'knn_model.joblib')
-                # loaded_model = joblib.load('knn_model.joblib')
-
-                # st.write("testing if it is accurate or not..")
-                # question
                 test = knn.predict([question, question])
 
                 st.subheader("Result")
@@ -262,12 +226,6 @@ if (selectModel != ""):
                 else:
                     st.write(
                         f'<p style="text-align: justify; font-size: 20px;">{"It appears that your location is safe from skin cancer exposure."}</p>', unsafe_allow_html=True)
-
-                # testJoblib = loaded_model.predict([question, question])
-                # testJoblib
-
-                # bro = loaded_model.predict(X_test)
-                # bro
 
         elif (selectModel == "Random Forest"):
             container_2 = st.empty()
