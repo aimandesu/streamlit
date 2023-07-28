@@ -82,17 +82,17 @@ data = [
             {
                 'model': "KNN",
                 'option': ["1", "5", "10", "15"],
-                'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
+                'results':   ["0.775", "0.7", "0.725", "0.7625"],
             },
             {
                 'model': "RF",
                 'option': ["100", "500", "1000"],
-                'results': ["0.9032258064516129", "0.9032258064516129", "0.8709677419354839"],
+                'results': ["0.9875", "0.9875", "0.9875"],
             },
             {
                 'model': "SVM",
                 'option': ["linear", "rbf", "poly", "sigmoid"],
-                'results': ["0.01", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
+                'results': ["0.9875", "0.675", "0.675", "0.6"],
             },
         ]
     },
@@ -122,17 +122,17 @@ data = [
             {
                 'model': "KNN",
                 'option': ["1", "5", "10", "15"],
-                'results':   ["0.8870967741935484", "0.8709677419354839", "0.8225806451612904", "0.8548387096774194"],
+                'results':   ["0.9588792582140697", "0.9689578713968958", "0.9667405764966741", "0.9639185648054828"],
             },
             {
                 'model': "RF",
                 'option': ["100", "500", "1000"],
-                'results': ["0.5", "0.9032258064516129", "0.8709677419354839"],
+                'results': ["0.970167304978835", "0.9703688772424914", "0.9703688772424914"],
             },
             {
                 'model': "SVM",
                 'option': ["linear", "rbf", "poly", "sigmoid"],
-                'results': ["0.9193548387096774", "0.8548387096774194", "0.8548387096774194", "0.8548387096774194"],
+                'results': ["0.9439629107034871", "0.928038701874622", "0.9330780084660351", "0.8713968957871396"],
             },
         ]
     },
@@ -273,8 +273,12 @@ for element in data:
             best_algo = "SVM with kernel linear"
         elif (title == "Breast Cancer"):
             best_algo = "Random Forest with estimators 100, 500, 1000"
-        else:
-            best_algo = "none"
+        elif (title == "Kidney Cancer"):
+            best_algo = "Random Forest with estimators 100, 500, 1000 and SVM with linear kernel"
+        elif (title == "Prostate Cancer"):
+            best_algo = "KNN with 1, 5 neigbors and SVM with kernel linear"
+        elif (title == "Skin Cancer"):
+            best_algo = "Random Forest with estimators 500, 1000"
 
     st.subheader("best algorithm:")
     st.write(
