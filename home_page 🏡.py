@@ -1,16 +1,17 @@
 import streamlit as st
 import streamlit.components.v1 as components
+from PIL import Image
 
 
 st.title("Home")
 
 description = "The web application is used to determine cancers such as breast, kidney, lung, prostate, and skin.\
-                For breast cancer, the web application is going to determine whether the user has lung cancer or not. \
-                Next, for kidney the web application is going to determine whether the user has lung cancer or not. \
+                For breast cancer, the web application is going to determine whether the user has breast cancer or not. \
+                Next, for kidney the web application is going to determine whether the user has kidney cancer or not. \
                 After that, lung cancer, the web application is going to determine whether the user has lung cancer or not. \
-                Other than that, for prostate cancer, the web application is going to determine whether the user has lung cancer or not.\
-                Lastly, for skin cancer, the web application is going to determine whether the user has lung cancer or not.\
-                These predictions are possible using solution which is by questioning the users of their condition or simply by  \
+                Other than that, for prostate cancer, the web application is going to determine whether the user has benign or malignant prostate cancer or not.\
+                Lastly, for skin cancer, the web application is going to determine whether the surrounding environment are linked with the skin cancer potential.\
+                These predictions are possible using solution which is by questioning the users of their condition, environment, or simply by  \
                 input physical numerical value according to the requirements and using machine learning to determine the possible answer.  \
                 "
 
@@ -19,6 +20,12 @@ st.write(
     f'<p style="text-align: justify; font-size: 20px; padding-bottom: 20px;">{description}</p>', unsafe_allow_html=True)
 
 to_use = "\n 1. From the appbar at left choose the cancer to try \n 2. Pick the model to try \n 3. Answer the question \n 4. Click the start analysis button"
+
+st.header("Cancer")
+
+image = Image.open('images\cancer.jpg')
+newImage = image.resize((1000, 700))
+st.image(newImage, caption='depiction of cancer')
 
 st.subheader("Model & How to use")
 st.write(

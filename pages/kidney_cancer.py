@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from PIL import Image
 
 
-st.title("Chronic Kidney Disease")
+st.title("CHRONIC KIDNEY DISEASE")
 st.subheader("What is Chronic Kidney Disease?")
 
 description = " \
