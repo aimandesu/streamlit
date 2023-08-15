@@ -248,7 +248,6 @@ if (selectModel != ""):
                 accuracy
 
                 test = knn.predict([question, question])
-                question
 
                 st.subheader("Result")
                 result = test[0]
@@ -284,7 +283,6 @@ if (selectModel != ""):
                 accuracy
 
                 test = rf.predict([question, question])
-                question
 
                 st.subheader("Result")
                 result = test[0]
@@ -320,7 +318,6 @@ if (selectModel != ""):
                 accuracy
 
                 test = svm.predict([question, question])
-                question
 
                 st.subheader("Result")
                 result = test[0]
