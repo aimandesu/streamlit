@@ -99,14 +99,17 @@ st.write(
 
 if (selectModel != ""):
 
-    if os.path.exists("joblib/tts_indices_skin_cancer.joblib"):
-        X_train, X_test, y_train, y_test = joblib.load(
-            'joblib/tts_indices_skin_cancer.joblib')
-    else:
-        X_train, X_test, y_train, y_test = train_test_split(
-            data_input_training, data_target_training, test_size=0.2)
-        joblib.dump((X_train, X_test, y_train, y_test),
-                    'joblib/tts_indices_skin_cancer.joblib')
+    X_train, X_test, y_train, y_test = train_test_split(
+        data_input_training, data_target_training, test_size=0.2)
+
+    # if os.path.exists("joblib/tts_indices_skin_cancer.joblib"):
+    #     X_train, X_test, y_train, y_test = joblib.load(
+    #         'joblib/tts_indices_skin_cancer.joblib')
+    # else:
+    #     X_train, X_test, y_train, y_test = train_test_split(
+    #         data_input_training, data_target_training, test_size=0.2)
+    #     joblib.dump((X_train, X_test, y_train, y_test),
+    #                 'joblib/tts_indices_skin_cancer.joblib')
 
     st.write("data input training")
     X_train
